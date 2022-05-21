@@ -12,20 +12,26 @@ def get_formatted_weather(api_response, units, location):
     else:
         temperature = '{} °{}'.format(temperature, DEGREE_TYPES['CELCIUS']['symbol'])
 
-    humidity = '{}'.format(api_response['main']['humidity'])
+    main = api_response['main']
+    sys = api_response['sys']
+    weather = api_response['weather'][0]
+    coord = api_response['coord']
+    wind_response = api_response['wind']
 
-    sunrise = api_response['sys']['sunrise']
-    sunset = api_response['sys']['sunset']
+    humidity = main['humidity']
+
+    sunrise = sys['sunrise']
+    sunset = sys['sunset']
 
     sunrise = unix_timestamp_to_readable_date(sunrise)
     sunset = unix_timestamp_to_readable_date(sunset)
+    compass_direction = deg_to_compass(wind_response['deg'])
 
-    cloudiness = '{}'.format(api_response['weather'][0]['description'])
-    pressure = '{} hPa'.format(api_response['main']['pressure'])
+    cloudiness = '{}'.format(weather['description'])
+    pressure = '{} hPa'.format(main['pressure'])
 
-    geo_coordinates = '[{}, {}]'.format(api_response['coord']['lat'], api_response['coord']['lon'])
-
-    wind_speed = '{} m/s {}'.format(api_response['wind']['speed'], deg_to_compass(api_response['wind']['deg']))
+    geo_coordinates = '[{}, {}]'.format(coord['lat'], coord['lon'])
+    wind_speed = '{} m/s {}'.format(wind_response['speed'], compass_direction)
 
     data = {
         'location_name': location,
