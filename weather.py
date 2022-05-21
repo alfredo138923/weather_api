@@ -18,8 +18,6 @@ def get_formatted_weather(api_response, units, location):
     coord = api_response['coord']
     wind_response = api_response['wind']
 
-    humidity = main['humidity']
-
     sunrise = sys['sunrise']
     sunset = sys['sunset']
 
@@ -29,6 +27,7 @@ def get_formatted_weather(api_response, units, location):
 
     cloudiness = '{}'.format(weather['description'])
     pressure = '{} hPa'.format(main['pressure'])
+    humidity = '{}%'.format(main['humidity'])
 
     geo_coordinates = '[{}, {}]'.format(coord['lat'], coord['lon'])
     wind_speed = '{} m/s {}'.format(wind_response['speed'], compass_direction)
