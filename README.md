@@ -27,6 +27,14 @@ Activate the enviroment:
 pipenv shell
 ```
 
+Create a *.secrets.toml* file in the root directory to store all the sensitive data with the following format to connect to openweathermap:
+
+```toml
+[default]
+TOKEN = 'my-very-secret token'
+OPENWEATHER_API_ENDPOINT = 'http://api.openweathermap.org/data/2.5/weather'
+```
+
 Run the Flask server:
 ```sh
 flask run
