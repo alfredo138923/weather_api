@@ -2,15 +2,17 @@ import requests
 from dynaconf import FlaskDynaconf
 from flask import Flask, request
 from weather import get_formatted_weather
+from flask_caching import Cache
 
 app = Flask(__name__)
-
 FlaskDynaconf(app)
+cache = Cache(app)  # Initialize Cache
 
 WEATHER_ENDPOINT = app.config['OPENWEATHER_API_ENDPOINT']
 
 
 @app.route('/get_current_weather/', methods=['GET'])
+@cache.cached(timeout=120, query_string=True)
 def get_current_weather():
     country_code = request.args.get('country', '').upper()
     city_code = request.args.get('city', '').title()

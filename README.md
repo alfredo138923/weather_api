@@ -11,6 +11,10 @@ Install Pyenv packaging tool.
 pip install --user pipenv
 ```
 
+## Redis
+Read the following the instructions to install Redis according your OS.
+https://redis.io/docs/getting-started/installation/
+
 Clone the repository:
 ```sh
 git clone https://github.com/alfredo138923/weather_api.git
