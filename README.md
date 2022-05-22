@@ -39,6 +39,11 @@ TOKEN = 'my-very-secret token'
 OPENWEATHER_API_ENDPOINT = 'http://api.openweathermap.org/data/2.5/weather'
 ```
 
+Run tests from root directory:
+```sh
+python -m pytest -s tests
+```
+
 Run the Flask server:
 ```sh
 flask run
