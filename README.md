@@ -49,6 +49,22 @@ Run the Flask server:
 flask run
 ```
 
+API call.
+
+HTTP Method: GET
+
+```sh
+http://localhost:8050/get_current_weather/
+```
+
+Parameters:
+
+| parameter | type   | required | description                                                |
+|-----------|--------|----------|------------------------------------------------------------|
+| country   | string | true     | Code of the country. [Codes](https://en.wikipedia.org/w/index.php?title=ISO_3166-1#Officially%20assigned%20code%20element)                                      |
+| city      | string | true     | Name of the city                                           |                            |
+| units     | string | false    | Units of measurement: standard, metric (default: standard) |
+
 ## License
 
 GNU General Public License v3.0
